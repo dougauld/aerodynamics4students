@@ -6,8 +6,8 @@
 <title>Resources | Aerodynamics for Students</title>
 <link rel='stylesheet' id='style-css'  href='../style.css' type='text/css' media='all' />
 <link rel="stylesheet" href="/jqmath/jqmath-0.4.3.css">
-<script src="/jqmath/jquery-1.4.3.min.js"></script>
-<script src="/jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+<script src="../jqmath/jquery-1.4.3.min.js"></script>
+<script src="../jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
 <script>M.MathPlayer = false; M.trustHtml = true;</script>
 </head>
 
@@ -83,25 +83,101 @@
      <div class="entry-main">
      <div class="entry-content"> 
 
-	<p><span style="color: #800000;"><b>Sections : </b>  </span></p>
-<p><a href="./index.html">International Standard Atmosphere (ISA)</a></p>
-<p><span style="color: #800000;"><a href="./sea-level-conditions.html">Sea Level Conditions</a></span></p>
-<p><span style="color: #800000;"><a href="./variation-with-altitude.html">ISA Variation with Altitude</a></span></p>
-<p><span style="color: #800000;"><a href="./variation-due-to-local-ground-conditions.html">Variation due to Local Ground Conditions</a></span></p>
-<p><span style="color: #800000;"><a href="./variation-due-to-humidity.html">Variation of Density due to Humidity</a></span></p>
-<p><span style="color: #800000;"><a href="./variation-due-to-extremely-altitude.html">Variation of Density with Extremely High Altitude</a></span></p>
-<p><span style="color: #800000;"><b>Tabulated Data :</b></span></p>
-<p><span style="color: #800000;"><a href="./table-of-atmospheric-properties.html">Table of Atmosphere Properties.</a></span></p>
-<p><span style="color: #800000;"><b>Software : </b></span></p>
-<p><span style="color: #800000;"><a style="color: #800000;" href="./atmosphere7.php" rel="nofollow">Atmosphere Properties Web Calculator</a></span></p>
-<p><span style="color: #800000;"><a style="color: #800000;" href="./atmoscalc.exe" rel="nofollow">Atmosphere Properties Calculator (MS Windows Executable)</a></span></p>
+<h3>ISA VARIATION WITH ALTITUDE</h3>
+       <p align="left">Pressure, temperature, density, viscosity and
+       speed of sound variation for the international standard
+       atmosphere (ISA) can be calculated for a range of altitudes
+       from sea level upward. This is done using an exact solution to
+       the hydrostatic equation for a column of air. The air is
+       assumed to be a perfect gas. In the lower region, the
+       troposphere, the atmosphere has a lapse rate (L) of 6.5K/Km .
+       At an altitude of 36089 ft the stratosphere starts and the
+       temperature remains constant at 217K. The hydrostatic
+       equation, perfect gas law and the lapse rate equations are,</p>
+<p>
+$${&part;P}/{&part;h} = - &rho;g\text"&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;"P=&rho;RT\text"&nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp;"T=T_0-Lh$$
+</p>
+       <p align="left">where the variables used are,</p>
+       <table width="639" cellpadding="2" cellspacing="0">
+        <col width="302">
+        <col width="329">
+        <tr>
+         <td width="302" style="border: none; padding: 0cm">
+          <p>$P$-- Pressure (Pa);</p>
+         </td>
+         <td width="329" style="border: none; padding: 0cm">
+          <p>$T$ -- Temperature (K);</p>
+         </td>
+        </tr>
+        <tr>
+         <td width="302" style="border: none; padding: 0cm">
+          <p>$g$ -- Gravitational acceleration (9.8 m/s<sup>2</sup>);</p>
+         </td>
+         <td width="329" style="border: none; padding: 0cm">
+          <p> $T_0$ -- Standard sea level
+          temperature (288 K);</p>
+         </td>
+        </tr>
+        <tr>
+         <td width="302" style="border: none; padding: 0cm">
+          <p>$R$ -- Gas constant for air (287 m<sup>2</sup>/s<sup>2</sup>/K);</p>
+         </td>
+         <td width="329" style="border: none; padding: 0cm">
+          <p>$h$ -- Altitude above sea level (m),</p>
+         </td>
+        </tr>
+        <tr>
+         <td width="302" style="border: none; padding: 0cm">
+          <p>$L$ -- Lapse rate (0.0065 K/m) and</p>
+         </td>
+         <td width="329" style="border: none; padding: 0cm">
+          <p>$&rho;$ -- Air density, ( Kg/m<sup>3</sup>);</p>
+          <p><br/>
 
-<h3>International Standard Atmosphere (ISA)</h3>
-<p>The International Standard Atmosphere (ISA) has been agreed to by many representative countries and 
-entities in the aviation field. It is a representative model of the atmosphere and not an average. 
-Most of the participants in aviation are in the northern hemisphere so this standard is based on the 
-range of local weather conditions that occur in their locations. The standard results will need to be 
-adjusted to suit weather conditions elsewhere.</p>
+          </p>
+         </td>
+        </tr>
+       </table>
+<center><img src="variation-with-altitude.png" name="Image4" alt="atmosphere_html_2f218832" align="bottom" width="800" border="0"/></center>
+<p align="center"><u>Atmospheric Layers
+       and Temperature Variation with Altitude.</u></p>
+<p align="left">Solving the hydrostatic equation with a
+       constant lapse rate gives the resulting pressure variation in
+       the troposphere.</p>
+<p>$$P/P_0=(T/T_0)^{g/{LR}}$$
+</p>
+       <p align="left">where sea level pressure, $P_0$
+       , is set at the standard <strong>101.3 kPa</strong>.</p>
+       <p align="left">Solving the hydrostatic equation with a
+       constant temperature gives the resulting pressure variation in
+       the stratosphere.</p>
+<p>
+$$P/P_s=e^{{g(h_s-h)}/{RT_s}}$$
+</p>
+       <p align="left">where conditions with subscript ($s$)
+       are values of altitude ($h_s$),
+       pressure ($P_s$) or
+       temperature ($T_s$) at the
+       tropopause, the start of the stratosphere; the line dividing
+       the two distinct atmospheric regions.</p>
+       <p align="left">Once pressure has been calculated at a
+       particular altitude, density is then calculated using the
+       perfect gas law. Viscosity and kinematic viscosity are found
+       by applying the Sutherland law</p>
+<p>
+$$&mu;=0.1456&times;10^{-5}{&radic;{T}}/{1+110/T}$$
+</p>
+       <p align="left">And finally speed of sound is found based on
+       the temperature,</p>
+<p>
+$$a=&radic;{&gamma;RT}$$
+</p>
+<p>where $&gamma;$
+       is the ratio of specific heats for air (1.4)</font></p>
+       <p align="center" style="margin-bottom: 0cm"><br/>
+
+       </p>
+</td></tr></table>
 
 <center><a href="#top">Back to Top</a></center>
 
@@ -116,7 +192,9 @@ adjusted to suit weather conditions elsewhere.</p>
 <footer id="colophon" class="site-footer" role="contentinfo">
 <div id="footer-widgets" class="full-container">
 </div><!-- #footer-widgets -->
-<div id="theme-attribution">(c) 1995-2025 Auld</div>
+<div id="theme-attribution">
+ <a href="../terms_and_conditions.pdf"><img height="25" border="0" src="../c-foot.png"></a>
+</div>
 </footer><!-- #colophon .site-footer -->
 </div><!-- #page-wrapper -->
 

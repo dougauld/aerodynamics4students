@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
@@ -83,26 +84,32 @@
      <div class="entry-main">
      <div class="entry-content"> 
 
-	<p><span style="color: #800000;"><b>Sections : </b>  </span></p>
-<p><a href="./index.html">International Standard Atmosphere (ISA)</a></p>
-<p><span style="color: #800000;"><a href="./sea-level-conditions.html">Sea Level Conditions</a></span></p>
-<p><span style="color: #800000;"><a href="./variation-with-altitude.html">ISA Variation with Altitude</a></span></p>
-<p><span style="color: #800000;"><a href="./variation-due-to-local-ground-conditions.html">Variation due to Local Ground Conditions</a></span></p>
-<p><span style="color: #800000;"><a href="./variation-due-to-humidity.html">Variation of Density due to Humidity</a></span></p>
-<p><span style="color: #800000;"><a href="./variation-due-to-extremely-altitude.html">Variation of Density with Extremely High Altitude</a></span></p>
-<p><span style="color: #800000;"><b>Tabulated Data :</b></span></p>
-<p><span style="color: #800000;"><a href="./table-of-atmospheric-properties.html">Table of Atmosphere Properties.</a></span></p>
-<p><span style="color: #800000;"><b>Software : </b></span></p>
-<p><span style="color: #800000;"><a style="color: #800000;" href="./atmosphere7.php" rel="nofollow">Atmosphere Properties Web Calculator</a></span></p>
-<p><span style="color: #800000;"><a style="color: #800000;" href="./atmoscalc.exe" rel="nofollow">Atmosphere Properties Calculator (MS Windows Executable)</a></span></p>
 
-<h3>International Standard Atmosphere (ISA)</h3>
-<p>The International Standard Atmosphere (ISA) has been agreed to by many representative countries and 
-entities in the aviation field. It is a representative model of the atmosphere and not an average. 
-Most of the participants in aviation are in the northern hemisphere so this standard is based on the 
-range of local weather conditions that occur in their locations. The standard results will need to be 
-adjusted to suit weather conditions elsewhere.</p>
+  <h3>VARIATION OF DENSITY WITH EXTREME ALTITUDE</h3>
+  <p>The
+  formula in the previous sections and the tabulated data below give
+  accurate predictions for an ideal atmosphere in the lower portions
+  near the earth's surface, the troposphere and the lower
+  stratosphere. This covers the first 20km which is where almost all
+  aviation takes place. For variations in density beyond this level
+  to the edge of space, where continuous gas behaviour no longer
+  applies, a rough approximation can be used by assuming there is a
+  logarithmic decay from sea level to the edge of space.</p>
+<p>
+$$&rho;=10^{(-7h)\/150}$$
+</p>
+<p>where $h$ is
+    the altitude in kilometers.</p>
+  <p align="center"><img src="variation-due-to-extremely-altitude.gif" name="Image2" alt="atmosphere_html_m3ab8ba74" align="bottom" width="800"  border="0"/></p>
+    <p align="center"><u>High Altitude Density
+    Approximation</u></font></p>
+    <p>While this estimate is rather crude for
+    small changes over the atmosphere near the earth's surface, it is
+    a simple way to estimate density effects for drag on launch
+    vehicles that will rapidly go from surface to orbital altitudes
+    of 200 to 300km or more.</font></p>
 
+</td></tr></table>
 <center><a href="#top">Back to Top</a></center>
 
 
@@ -116,7 +123,9 @@ adjusted to suit weather conditions elsewhere.</p>
 <footer id="colophon" class="site-footer" role="contentinfo">
 <div id="footer-widgets" class="full-container">
 </div><!-- #footer-widgets -->
-<div id="theme-attribution">(c) 1995-2025 Auld</div>
+<div id="theme-attribution">
+ <a href="../terms_and_conditions.pdf"><img height="25" border="0" src="../c-foot.png"></a>
+</div>
 </footer><!-- #colophon .site-footer -->
 </div><!-- #page-wrapper -->
 
