@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
 <title>Resources | Aerodynamics for Students</title>
 <link rel='stylesheet' id='style-css'  href='../style.css' type='text/css' media='all' />
-<link rel="stylesheet" href="/jqmath/jqmath-0.4.3.css">
-<script src="/jqmath/jquery-1.4.3.min.js"></script>
-<script src="/jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="../jqmath/jqmath-0.4.3.css">
+<script src="../jqmath/jquery-1.4.3.min.js"></script>
+<script src="../jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
 <script>M.MathPlayer = false; M.trustHtml = true;</script>
 </head>
 
@@ -83,18 +83,121 @@
      <div class="entry-main">
      <div class="entry-content"> 
 
-<table><tr><td><p></p><span style="color: #800000;"><b>Sections : </b>  </span></p>
-<p><a href="../properties-of-the-atmosphere/index.html">Properties of the Atmosphere</a></p>
-<p><a href="./aerofoil-section-2-d-geometry.html">Aerofoil Section 2-D Geometry</a></p>
-<p><a href="./joukowski-aerofoils-and-flow-mapping.html">Joukowski Flow Mapping &amp; Aerofoils</a></p>
-<p><a href="./2-d-thin-aerofoil-theory.html">2-D Thin Aerofoil Theory</a></p>
-<p><a href="./2d-panel-methods.html">2-D Panel Methods</a></p>
-<p><a href="./2d-boundary-layer-modelling.html">2-D Boundary Layer Modelling</a></p>
-<p><a href="./3d-prandtl-lifting-line-theory.html">3-D Lifting Line Theory</a></p>
-<p><a href="./3d-vortex-lattice-method.html">3-D Vortex Lattice Method</a></p>
-<p><a href="./subsonic-compressibility-corrections.html">Compressibility Corrections</a></p>
-</td><td align="top"><p><a href="subsonic.png"><img src="subsonic.png" alt="subsonic" width="621" height="517" /></a></p>
-</td></tr></table>
+<h3>3D VORTEX LATTICE METHOD</h3>
+<p>A solution for three-dimensional wings of any general form can be obtained 
+by using a vortex lattice model. For incompressible, inviscid flow, the wing 
+is modelled as a set of lifting panels. Each panel will contain a single 
+horse-shoe vortex. A bound vortex is located at the panel 1/4 chord position 
+with two trailing vortex lines shed from each end.</p>
+<center><img src="subsonic7_wing1.png"/></center>
+<p>Both span-wise and chord-wise variation in lift can be modelled as a set 
+of step changes from one panel to the next.</p>
+<p>The required strength of the bound vortex on each panel will need to be 
+calculated by applying a surface flow boundary condition. The equation used 
+is the usual condition of zero flow normal to the surface. For each panel 
+the condition is applied at the 3/4 chord position along the center line of 
+the panel. The normal velocity is made up of a freestream component and an 
+induced flow component. This induced component is a function of strengths 
+of all vortex panels on the wing. Thus for each panel an equation can be set 
+up which is a linear combination of the effects of the strengths of all panels.
+ A matrix of influence coefficients is created which is multiplied by the 
+ vortex strengths and equal to a right hand side vector of freestream effects.</p>
+<p>
+$$V_n=0=V_&infin;\sin(&theta;)+w_i$$<br />
+$$w_i=&sum;_{j=1}^N A_{i,j}&Gamma;_j$$</p>
+<p>thus</p>
+<p>$$&sum;_{j=1}^N A_{i,j} &Gamma;_j=-V_&infin;\sin(&theta;)$$</p>
+<p>The influence coefficient $A_{i,j}$ will represent the induced flow on 
+panel $i$ due to the vortex on panel $j$. If all panels are assumed to be 
+approximately planar then this influence coefficient can be calculated as a 
+relatively simple application of the Biot-Savart law along the three 
+component vortex lines.</p>
+<center><img src="subsonic7_wing2.png" /></center>
+<p>The result of this integration leads to the following formulae for 
+influence coefficients in general.</p>
+<p>
+$$&Delta;w = 1/{4&pi;}{\sin(&phi;)}/r^2 &Gamma;_j.ds$$</p>
+<p>thus</p><p>
+$$w_{i,j}=&int;1/{4&pi;} {\sin(&phi;)}/r^2 .ds.&Gamma;_j = A_{i,j}.&Gamma;_j$$</p>
+<p>where the integration is done in three parts, the two trailing lines and 
+the bound vortex, giving</p>
+<p>
+$$A_{i,j}=1/{4&pi;}(A_{\text"bound vortex"}+A_{\text"left trailing"}+A_{\text"right trailing"})$$
+</p><p>where</p>
+<p>
+$$\table A_{\text"bound vortex"}, =, 1/{(x+h)(y-k)-(x-h)(y+k)}({2h(x+h)+2k(y+k)}/{R_1}-{2h(x-h)+2k(y-k)}/{R_2});
+        A_{\text"left trailing"}, =, -1/{(y+k)}(1+{x+h}/R_1);
+       A_{\text"right_trailing"}, =, 1/{(y-k)}(1+{x-h}/R_2)$$</p><p>where</p><p>
+$$R_1=&radic;{(x+h)^2+(y+k)^2}$$<br />
+$$R_2=&radic;{(x-h)^2+(y-k)^2}$$
+</p><p>The right-hand side terms for the boundary condition equations 
+will depend upon the freestream velocity, the angle of attack for the wing 
+and the slope of the panels due to camber effects.</p>
+<center><img src="subsonic7_wing3.gif" /></center>
+<p>$$\sin(&theta;)=\sin(&alpha;-&beta;_i)&asymp;&alpha;-&beta;_i&asymp;&alpha;-({dz}/{dx})_i$$
+</p><p>assuming all the angles are small. A solution for the strength of 
+the vortex lines on each panel is found by solving the matrix of equations for 
+the strength of each vortex panel, $&Gamma;_j$.</p>
+<p>The lift coefficient for the wing at a given angle of attack will be 
+obtained by integrating the panel lift distribution. The lift on a particular 
+panel can be found using the Kutta Law.</p>
+<p>
+$$L_i=&rho;V_&infin;&Gamma;_j 2k$$
+</p><p>which is the lift of panel $i$.</p>
+<p>Therefore lift of wing is the sum of all panel lift components,</p>
+<p>
+$$L=&sum;_{i=1}^N L_i$$
+</p><p>The downwash velocity induced at on a panel can be calculated 
+once the strength of the wing loading is known. The variation between 
+local flow angles for the panel and the freestream velocity can be found. 
+A consequence of this downwash flow is that the direction of action of each 
+panel's lift vector is rotated relative to the freestream direction. The 
+local lift vectors are rotated backward and hence give rise to a lift induced 
+drag. By integrating the component of panel lift coefficient that acts 
+parallel to the freestream across the span then the induced drag coefficient 
+can be found.</p>
+<p>
+$$D_i=&rho;V_&infin;&Gamma;_i\sin(&alpha;_i)$$
+</p><p>which is the induced drag from panel <b>i</b>.</p>
+<p>Therefore the lift induced drag of the wing is</p>
+<p>
+$$D_{induced}=&sum;_{i=1}^N D_i$$
+</p><p>The induced flow angle $&alpha;_i&asymp;w_i\/V_&infin;$ represents 
+a rotation of the lift vector backward and must be calculated from the 
+velocities induced on the bound vortex of the panel by other panels and the 
+freestream.</p>
+<p>Pitching moment about the wing root leading edge can be calculated by summing the panel lift multiplied by a moment arm which extends in the x-direction from the leading edge of the wing to the centre of the bound vortex for the panel.</p>
+<h2>Software : Vortex Lattice Method Program</h2>
+<p>The following computer program allows the user to define wing planforms 
+and geometries. The program assumes a linear variation of planform for up to 
+two zones and a simple planar tailplane. Zone 1 covers wing root to specified 
+span location, then Zone 2 covers span location to wing tip. The section 
+properties can vary linearly across each zone between wing root, mid-span and 
+tip or a contant section can be set for each zone. The wing loading is assumed 
+to be symmetric about the wing root. The tailplane can be set at a required 
+distance behind the wing root with a constant chord and sweep angle. 
+A CG position (faction of root chord behind leading) can be set so that 
+calculated $C_m$ coefficients will be relative to this point</p>
+<p>The aerofoil section properties for the wing root, mid-span and tip can 
+be specified by entering a chord length and zero lift angle. This will 
+generate a mean line for each section which corresponds to the input 
+section properties. An incidence angle can be set for the tailplane.</p>
+<p>Wing geometry variables :</p>
+<center>
+<img src="subsonic7_wing4.jpg" /></center>
+<p>$r_c$ – root chord,</p>
+<p>$s_c$ – section chord,</p>
+<p>$t_c$ – tip chord.</p>
+<p>The origin is at wing root leading edge and CG location is defined as a fraction of the root chord from leading edge.</p>
+<p>The program uses the above vortex lattice method equations to obtain solutions for lift coefficient versus angle of attack, pitching moment coefficient versus angle and induced drag coefficient versus lift coefficient<sup>2</sup>. For a given angle of attack the program will display the resulting differential pressure coefficient distribution.</p>
+<h2>Software</h2>
+<ul>
+<li>Executable Script : <a href="vlmcalc.html" rel="nofollow">Vortex Lattice Method (3-D)</a></li>
+</ul>
+<h2>References &amp; Resources</h2>
+<p>"Aerodynamics for Engineering Students" Bertin and Smith, Macmillan 1966.</p>
+<p>“<a href="http://web.mit.edu/drela/Public/web/avl/" rel="nofollow">Extended Vortex Lattice Model – AVL</a>” Marc Drela, MIT,2004</p>
+
 
 <center><a href="#top">Back to Top</a></center>
 
@@ -127,7 +230,3 @@
 
 </body>
 </html>
-
-<?php
-include "sub1.php";
-?>

@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
 <title>Resources | Aerodynamics for Students</title>
 <link rel='stylesheet' id='style-css'  href='../style.css' type='text/css' media='all' />
-<link rel="stylesheet" href="/jqmath/jqmath-0.4.3.css">
-<script src="/jqmath/jquery-1.4.3.min.js"></script>
-<script src="/jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="../jqmath/jqmath-0.4.3.css">
+<script src="../jqmath/jquery-1.4.3.min.js"></script>
+<script src="../jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
 <script>M.MathPlayer = false; M.trustHtml = true;</script>
 </head>
 
@@ -83,18 +83,73 @@
      <div class="entry-main">
      <div class="entry-content"> 
 
-<table><tr><td><p></p><span style="color: #800000;"><b>Sections : </b>  </span></p>
-<p><a href="../properties-of-the-atmosphere/index.html">Properties of the Atmosphere</a></p>
-<p><a href="./aerofoil-section-2-d-geometry.html">Aerofoil Section 2-D Geometry</a></p>
-<p><a href="./joukowski-aerofoils-and-flow-mapping.html">Joukowski Flow Mapping &amp; Aerofoils</a></p>
-<p><a href="./2-d-thin-aerofoil-theory.html">2-D Thin Aerofoil Theory</a></p>
-<p><a href="./2d-panel-methods.html">2-D Panel Methods</a></p>
-<p><a href="./2d-boundary-layer-modelling.html">2-D Boundary Layer Modelling</a></p>
-<p><a href="./3d-prandtl-lifting-line-theory.html">3-D Lifting Line Theory</a></p>
-<p><a href="./3d-vortex-lattice-method.html">3-D Vortex Lattice Method</a></p>
-<p><a href="./subsonic-compressibility-corrections.html">Compressibility Corrections</a></p>
-</td><td align="top"><p><a href="subsonic.png"><img src="subsonic.png" alt="subsonic" width="621" height="517" /></a></p>
-</td></tr></table>
+<H3>Linear vorticity Panel Method for Aerofoils.</H3>
+<P><U>Influence Coefficents</U>  &nbsp;&nbsp; A<sub>i,j</sub> and B<sub>i</sub></p> 
+<PRE>
+   DO I=1,NUMPAN    
+      XC=(X(I)+X(I+1))*0.5                     control point X -coord
+      YC=(Y(I)+Y(I+1))*0.5                     control point Y -coord
+      DX=X(I+1)-X(I)                           X length of panel I
+      DY=Y(I+1)-Y(I)                           Y Length of panel I
+      THETI=ARCTAN2(DY,DX)                     angle of Panel I
+      SNI=SIN(THETI)
+      CSI=COS(THETI)
+      DO J=1,NUMPAN
+          XT=XC-X(J)                           X  length - control point to J end of panel J        
+          YT=YC-Y(J)                           Y  length - control point to J end of panel J
+          DX=X(J+1)-X(J)                       X length of panel J
+          DY=Y(J+1)-Y(J)                       Y length of panel J
+          THETA=ARCTAN2(DY,DX)                 angle of panel J  
+          CS=COS(THETA)  
+          SN=SIN(THETA)  
+          CSM=COS(-THETA)
+          SNM=SIN(-THETA)
+          X1=XT*CS+YT*SN
+          Y1=-XT*SN+YT*CS
+          X2=DX*CS+DY*SN
+          R1=SQRT(ABS(X1*X1+Y1*Y1))
+          R2=SQRT(ABS((X1-X2)*(X1-X2)+Y1*Y1))
+          TH1=ARCTAN2(Y1,X1)
+          TH2=ARCTAN2(Y1,(X1-X2))
+          IF (I.EQ.J) THEN                                     effect of panel on itself
+                U1L=-0.5*(X1-X2)/X2
+                U2L=0.5*X1/X2
+                W1L=-0.15916
+                W2L=0.15916
+          ELSE
+                U1L=-(Y1*LOG(R2/R1)+X1*(TH2-TH1)-X2*(TH2-TH1))/(TWOPI*X2)
+                U2L=(Y1*LOG(R2/R1)+X1*(TH2-TH1))/(TWOPI*X2)
+                W1L=-((X2-Y1*(TH2-TH1))-X1*LOG(R1/R2)+X2*LOG(R1/R2))/(TWOPI*X2)
+                W2L=((X2-Y1*(TH2-TH1))-X1*LOG(R1/R2))/(TWOPI*X2)
+          ENDIF
+          U1=U1L*CSM+W1L*SNM
+          U2=U2L*CSM+W2L*SNM
+          W1=-U1L*SNM+W1L*CSM
+          W2=-U2L*SNM+W2L*CSM
+          IF (J.EQ.1) THEN   
+             AMAT(I,1)=-U1*SNI+W1*CSI                                         A(I,1)
+             HOLDA=-U2*SNI+W2*CSI
+          ELSEIF (J.EQ.NUMPAN) THEN
+             AMAT(I,NUMPAN)=-U1*SNI+W1*CSI+HOLDA                              A(I,N-1)
+             AMAT(I,NUMPNT)=-U2*SNI+W2*CSI                                    A(I,N)
+          ELSE
+              AMAT(I,J)=-U1*SNI+W1*CSI+HOLDA                                  A(I,J) 
+              HOLDA=-U2*SNI+W2*CSI
+          ENDIF
+      ENDDO      
+      RHS(I)=COS(ALF)*SNI-SIN(ALF)*CSI                                        B(I)
+      ENDDO
+                                                                        SET Kutta condition
+      DO J=1,NUMPNT  
+         AMAT(NUMPNT,J)=0.0                                              A(N,.. .) = 0
+      ENDDO
+      RHS(NUMPNT) = 0.0                                                      B(N)
+      AMAT(NUMPNT,1)=1.0                                                  
+      A(N,1)=AMAT(NUMPNT,NUMPNT)=1.0                                         A(N,N)
+   
+
+</pre><p><a href="./2d-panel-methods.html">Return to 2-D Panel Methods Section</a></p>
+
 
 <center><a href="#top">Back to Top</a></center>
 
@@ -109,9 +164,7 @@
 <footer id="colophon" class="site-footer" role="contentinfo">
 <div id="footer-widgets" class="full-container">
 </div><!-- #footer-widgets -->
-<div id="theme-attribution">
- <a href="../terms_and_conditions.pdf"><img height="25" border="0" src="../c-foot.png"></a>
-</div>
+<div id="theme-attribution">(c) 1995-2025 Auld</div>
 </footer><!-- #colophon .site-footer -->
 </div><!-- #page-wrapper -->
 
@@ -127,7 +180,3 @@
 
 </body>
 </html>
-
-<?php
-include "sub1.php";
-?>

@@ -5,9 +5,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
 <title>Resources | Aerodynamics for Students</title>
 <link rel='stylesheet' id='style-css'  href='../style.css' type='text/css' media='all' />
-<link rel="stylesheet" href="/jqmath/jqmath-0.4.3.css">
-<script src="/jqmath/jquery-1.4.3.min.js"></script>
-<script src="/jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="../jqmath/jqmath-0.4.3.css">
+<script src="../jqmath/jquery-1.4.3.min.js"></script>
+<script src="../jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
 <script>M.MathPlayer = false; M.trustHtml = true;</script>
 </head>
 
@@ -83,18 +83,98 @@
      <div class="entry-main">
      <div class="entry-content"> 
 
-<table><tr><td><p></p><span style="color: #800000;"><b>Sections : </b>  </span></p>
-<p><a href="../properties-of-the-atmosphere/index.html">Properties of the Atmosphere</a></p>
-<p><a href="./aerofoil-section-2-d-geometry.html">Aerofoil Section 2-D Geometry</a></p>
-<p><a href="./joukowski-aerofoils-and-flow-mapping.html">Joukowski Flow Mapping &amp; Aerofoils</a></p>
-<p><a href="./2-d-thin-aerofoil-theory.html">2-D Thin Aerofoil Theory</a></p>
-<p><a href="./2d-panel-methods.html">2-D Panel Methods</a></p>
-<p><a href="./2d-boundary-layer-modelling.html">2-D Boundary Layer Modelling</a></p>
-<p><a href="./3d-prandtl-lifting-line-theory.html">3-D Lifting Line Theory</a></p>
-<p><a href="./3d-vortex-lattice-method.html">3-D Vortex Lattice Method</a></p>
-<p><a href="./subsonic-compressibility-corrections.html">Compressibility Corrections</a></p>
-</td><td align="top"><p><a href="subsonic.png"><img src="subsonic.png" alt="subsonic" width="621" height="517" /></a></p>
-</td></tr></table>
+<h3>2D PANEL METHODS</h3>
+<p>The prediction of aerodynamic properties of streamlined aerofoil sections can be obtained relatively quickly and accurately using two dimensional panel method analysis. The solutions will be initially inviscid flow predictions. This will give lift and pitching moment properties. Then, with the introduction of some simple one-dimensional boundary layer theory, the viscous component of the solution can be predicted and drag calculated.</p>
+<p>The solution is obtained by combining two separate calculations, an inviscid panel method prediction of flow velocities and pressures and a <a href="/subsonic-aerofoil-and-wing-theory/2d-boundary-layer-modelling.html">viscous boundary layer theory</a> prediction of surface flow displacement and momentum loss due to friction.</p>
+<p>Because the presence of a boundary layer does modify the aerofoil's displacement effect on the freestream, it is more accurate to iterate between the results of these two solutions and obtain a final, converged solution. However in many cases, numerical problems may arise due to the number of iterations required and the possibility of an unstable iteration.</p>
+<p>In the Reynolds number range that is the case for small to large aircraft, the boundary layer is very thin and a reasonable result is generally obtained by just using a single pass of each solution component. The solution software below does just one inviscid flow solution for velocities and then one boundary layer integration pass to obtain a solution. More complex panel method solutions are available in the reference material listed below.</p>
+<h2>Inviscid Panel Method</h2>
+<p>A potential flow solution of any general aerofoil section can be modeled by 
+discretising the surface contour using singularity panels. Many different 
+techniques are possible but for the programs used on this site, the following 
+configuration has been employed for the panel modeling. It is based on using 
+straight panels with a linear distribution of vorticity between end points.</p>
+<center><img src="subsonic4_panel1.png"></center><p>Each panel is a straight 
+line segment between surface contour points $j$ and $j+1$. Along the panel, a 
+vortex distribution of linearly varying strength $γ$ is applied with a pair of 
+constant values at each end point, $γ_j$ and $γ_{j+1}$. This distribution 
+strength varies from panel to panel but end point values must be consistent. 
+As the geometry of the section and the freestream flow conditions $V_∞$ -- 
+velocity , $α$ -- angle of attack ) are set, the requirement will be to define 
+boundary condition equations in order to determine the necessary distribution 
+strength at the panel end points $γ_j, j=1,N$  where $N$ is the number of panels)
+ for an accurate model of the problem.</p>
+<p>A boundary condition of no flow through surface $V_n=0$ can be applied at 
+the center of each panel. This produces $N$ equations in $N+1$ unknowns. 
+In order to correctly solve for the extra unknown vorticity, a Kutta 
+condition must be applied at the trailing edge.</p>
+<center><img src="subsonic4_panel2.png"></center><p>For a single panel $i$ the 
+boundary condition will be applied as,</p>
+<p>
+$$V_n = Σ ( \text"velocities on panel due to all panel vorticies" ϒ ) + \text"freestream velocity component" = 0$$<br />
+$$V_n=&sum;_{j=1}^{N+1}(A_{i,j}.&gamma;_j)+B_iV_&infin;=0\text"&nbsp;&nbsp;&nbsp;&nbsp; at Panel (i)"$$
+</p><p>where the coefficient, $A_{i,j}$,represents the influence of the 
+vorticity components of panel $j$ on the control point on panel $i$ and , 
+$B_i$,
+ represents the influence of the freestream on panel $i$. 
+ All coefficients are functions of the geometry of the section, 
+ <a href="Influence_coefficients.html" rel="nofollow"><u><b>A</u><sub>i,j</sub><u></b> = <i>function</i>(x,y)</u></a> due to orientation and spacing of panels.</p>
+<p>The Kutta condition, equation $N+1$ can be applied in terms of trailing 
+edge tangential velocities which means that the vorticity at the trailing 
+edge is zero,</p>
+<p>
+$$V_{t.e.}(\text"upper surface")=-V_{t.e.}(\text"lower surface")\text"&nbsp;&nbsp;&nbsp; , &nbsp;&nbsp;&nbsp;"V_{t.e.}(1)=-V_{t.e.}(N)\text"&nbsp;&nbsp;&nbsp; , &nbsp;&nbsp;&nbsp;"&gamma;_{t.e.}=0$$
+</p>
+<p>thus</p>
+<p>
+$$&gamma;_1+&gamma;_{N+1}=0$$
+</p><p>This gives a system of linear equations which allow the solution 
+for the required distribution strengths to be found.</p>
+<p>
+$$ [ {\table A_{1,1}, A_{1,2}, ..., A_{1,N+1};
+            A_{2,1}, A_{2,2}, ..., A_{2,N+1};
+                   ,   ...  ,    ,          ;
+            A_{N,1}, A_{N,2}, ..., A_{N,N+1};
+                  1,     0 ,  ...,    1} ]
+   &times ( {\table &gamma;_1; &gamma;_2; .; &gamma;_N; &gamma;_{N+1} } )
+   = -    ( {\table      B_1;      B_2; .;       B_N;            0  } ) V_&infin; $$
+</p>          
+<p>Once the distribution strengths $γ_j$ have been calculated, surface 
+tangential velocities at the centre of each panel can be calculated $V_i$ and 
+then surface pressure coefficients $Cp_i$,</p>
+<center><img src="subsonic4_panel7.png"></center>
+<p>$$Cp_i=(1 - V_i^2/V_&infin;^2)$$
+</p>
+<p>The lift coefficient can be calculated, assuming a small angle of attack, as the integration of surface pressure coefficient acting in the y-direction, ie. projected on the x axis.</p>
+<p>
+$$C_L = &sum;_{i=1}^N Cp_i {(x_i-x_{i+1})}/c$$
+</p><p>Pitching moment coefficient will similarly be the sum of the panel moments about the 1/4 chord point.</p>
+<p>
+$$C_{M 1/4 c}= &sum;_{i=1}^N Cp_i {(x_i-x_{i+1})}/c ({(x_i+x_{i+1})}/{2c} - 1/4)$$
+</p><p>Both calculations assume the cos(α) effect due to the difference between chord line and freestream direction are negligible.</p>
+<p>Solutions only need to be calculated for one or two angles of attack as the lift curve will be linear. Stall and boundary layer effects are not predicted by the first part of the process as it deals only with inviscid flow.</p>
+<h3><span style="color: #800000;">APPLICATION : 2D Panel Code Computer Program.</span></h3>
+<p>The following program accepts ASCII data files which consist of a list 2-D aerofoil section coordinate points (x,y). The format of these aerofoil input data files is the same as that produced by the <a href="naca.exe" rel="nofollow">NACA section generation program</a>.</p>
+<p>The data file structure used is shown below,</p>
+<p>Header Line<br />
+ N (Number of Data Points describing section)<br />
+ X(1)   Y(1)<br />
+ X(2)   Y(2)<br />
+ X(3)   Y(3)<br />
+ ...<br />
+ X(N)  Y(N)</p>
+<p>There is an initial header line, followed by a line giving the number of data points used to describe the aerofoil and then pairs of surface coordinate points (x,y). The order of surface points is anti-clockwise, starting at the trailing edge, going back over the upper surface around the nose and then forward along the underside back to the trailing edge. Data files for other aerofoil sections can be created using a spreadsheet or text editor to give a data file in the correct format.</p>
+<p>Some sample section files are <a href="NACA0012.txt" rel="nofollow">NACA 0012</a>, <a href="NACA4412.txt"> NACA 4412</a> and <a href="NACA64-012.txt">NACA 64-012</a>.</p>
+<p>From the surface coordinate data file, the program calculates an inviscid flow solution. The 1-D momentum integration is run to predict the boundary layer near the aerofoil surface. The program can predict C<sub>L</sub>, C<sub>m(1/4c)</sub> and C<sub>D</sub> for the specified aerofoil section at a given angle and Reynolds number.</p>
+<ul>
+<li>Old Executable Program : <a href="panel2d.exe">2-D Panel Method Solution</a> MS Windows downloadable</li>
+<li>Old Executable Program : <a href="naca.exe">2-D NACA Aerofoil Section Generator</a> MS Windows downloadable</li>
+<li>Executable Program : <a href="panel2d.html">2-D Aerofoil Section Analysis</a></li>
+<li>Virtual Wind Tunnel System : <a href="../wind-tunnel-simulation/index.html">Program Suite to allow a number of different solutions</a></li>
+<li>Alternately for a more elaborate section solver try the XFOIL program, visit the Marc Drela GPL Aerofoil Solution System site at <a href="http://web.mit.edu/drela/Public/web/xfoil/" rel="nofollow">MIT XFOIL site.</a></li>
+</ul>
+
+
 
 <center><a href="#top">Back to Top</a></center>
 
@@ -127,7 +207,3 @@
 
 </body>
 </html>
-
-<?php
-include "sub1.php";
-?>
