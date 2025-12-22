@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<title>Resources | Aerospace 101</title>
+<link rel='stylesheet' id='style-css'  href='../style.css' type='text/css' media='all' />
+<link rel="stylesheet" href="../jqmath/jqmath-0.4.3.css">
+<link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon">
+<script src="../jqmath/jquery-1.4.3.min.js"></script>
+<script src="../jqmath/jqmath-etc-0.4.6.min.js" charset="utf-8"></script>
+<script>M.MathPlayer = false; M.trustHtml = true;</script>
+</head>
+
+<body class="page page-id-364 page-parent page-template page-template-templates page-template-template-full-notitle page-template-templatestemplate-full-notitle-php siteorigin-panels responsive layout-full no-js has-menu-search panels-style-force-full">
+<a id="top"></a>
+<div id="page-wrapper">
+ <header id="masthead" class="site-header masthead-logo-in-menu" role="banner">
+ <nav role="navigation" class="site-navigation main-navigation primary use-sticky-menu">
+ <div class="full-container">
+  <a href="../" title="Aerospace 101" rel="home" class="logo"><img src="../aerospacelogo.png"  class="logo-height-constrain"  width="1000"  height="100"  alt="Aerospace 101 Logo"  /></a>
+  <div class="menu-menu-1-container"><ul id="menu-menu-1" class="menu"><li id="menu-item-249" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-249"><a href="../index.html">Welcome</a></li>
+   <li id="menu-item-222" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-222"><a href="/toc.html">Table of Contents</a>
+   <ul class="sub-menu">
+   <li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-223"><a href="../introduction/index.html">Introduction</a></li>
+   <li id="menu-item-224" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-224"><a href="../fluid-mechanics/index.html">Fluid Mechanics</a></li>
+   <li id="menu-item-225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="../flow-visualisation/index.html">Flow Visualisation</a></li>
+   <li id="menu-item-226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="../properties-of-the-atmosphere/index.html">Properties of the Atmosphere</a> </li>
+   <li id="menu-item-233" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-233"><a href="../subsonic-aerofoil-and-wing-theory/index.html">Subsonic Aerofoil and Wing Theory</a> </li>
+   <li id="menu-item-242" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-242"><a href="../gas-dynamics-and-supersonic-flow/index.html">Gas Dynamics and Supersonic Flow</a></li>
+   <li id="menu-item-243" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-243"><a href="../propulsion/index.html">Propulsion</a> </li>
+   <li id="menu-item-248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-248"><a href="../aircraft-instruments/index.html">Aircraft Instruments</a></li>
+   <li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="../aircraft-performance/index.html">Aircraft Performance</a></li>
+   <li id="menu-item-276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-276"><a href="../Flight-Mechanics/index.html">Flight Mechanics</a></li>   
+   <li id="menu-item-356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-356"><a href="../aeroelasticity/index.html">Aeroelasticity</a></li>
+   <li id="menu-item-363" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-363"><a href="../wind-tunnel-simulation/index.html">Wind Tunnel Simulation</a> </li>
+   </ul>
+   </li>
+   <li id="menu-item-366" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-364 current_page_item menu-item-366"><a href="../resources/index.html">Resources</a></li>
+   <li id="menu-item-535" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-535"><a href="../contact-us/index.html">Contact Us</a></li>
+   </ul>
+  </div>
+ </div>
+ </nav><!-- .site-navigation .main-navigation -->
+ </header><!-- #masthead .site-header -->
+  <div id="main" class="site-main"> 
+  <div class="full-container">
+   <div id="primary" class="content-area">
+    <div id="content" class="site-content" role="main">
+     <article id="post-364" class="post-364 page type-page status-publish hentry post">
+     <div class="entry-main">
+     <div class="entry-content"> 
+
+
+<h3>Prandtl-Meyer Expansion Angle Calculations</h3>
+
+This form calculates properties of a supersonic flow through an expansion angle.
+The required input is the Mach number of the upstream flow and the expansion
+angle (&theta;). The gas is assumed to be ideal air. (&gamma;=1.4)<br /><b>Note:</b>
+Flow separation at sharp corners due to viscous effects are ignored in these calculations.<br /><br />
+
+<table border='1' cellpadding='5' cellspacing='0'>
+<tr><td bgcolor='#95b1d6'>
+<form>
+<B>Inputs</B><br>
+Upstream Mach Number (M<sub>1</sub>)<br />
+<INPUT NAME='M1' id='M1' TYPE='text' VALUE='2.0' SIZE='15' onfocus="HideResults();" autofocus><br />&nbsp;<br />
+Expansion angle for flow (&theta;)(deg)<br />
+<INPUT NAME='theta' id='theta' TYPE='text' VALUE='0.0' SIZE='15' onfocus="HideResults();" autofocus><br />&nbsp;<br />
+<input id="ComputeButton" type="button" value="Compute" onclick="ComputeAngle();" > 
+</form></td><td>
+<fieldset id="results">
+<B>Results</B><br>
+Downstream Mach Number (M<sub>2</sub>) = 
+<input NAME="M2" id="M2" type="text" size="20" value=" " readonly="readonly" class="transparent-input"> 
+<br />&nbsp;<br />
+ <table><tr><td>
+<canvas id="imageout" width="500" height="400" style="border:1px solid grey"></canvas>
+ </td><td>Note: For results where M<sub>2</sub>=NAN -- indicates that expansion angle input is greater than
+the maximum permitted for upstream Mach number. <br />Maximum turning angle (Degree) = <input id="thmax" NAME="thmax" type="text" size="20" value=" " readonly="readonly">.
+ </td></tr></table></fieldset></td></tr></table>
+
+<script>
+
+function HideResults() {
+//  alert("Hiding results");
+  document.getElementById("results").style.visibility="hidden";
+}   // --------------------------------------------- End of function HideResults
+
+function ComputeAngle() {
+
+ var M1field = document.getElementById("M1").value;
+ var Thetafield = document.getElementById("theta").value;
+ 
+ var M1,M2,theta,a1,a2,a3,pm,pm1,pm2,e1,e2,am1,count;
+ var fail=0;
+ var PI=3.1415926;
+  
+ if (M1field == "") {
+  M1 = 2.0;
+  theta = 0.0;
+  M2 = 2.0;
+ } else { 
+  theta=Number(Thetafield);
+  M1=Number(M1field);
+  if (M1 < 1.0 ) {
+   M2 = "No Solution" 
+   theta = 0.0;
+   fail=2;
+  } else {
+   a1 = Math.sqrt(2.4/0.4);
+   a2 = Math.atan(Math.sqrt(0.4*(M1*M1-1.0)/2.4));
+   a3 = Math.atan(Math.sqrt(M1*M1-1.0));
+   pm1 = (a1*a2 - a3);
+   pm = pm1 + theta*3.1415926/180.0;
+   e1 = pm - pm1;
+   M2 = M1*2.0;
+   a1 = Math.sqrt(2.4/0.4);  
+   a2 = Math.atan(Math.sqrt(0.4*(M2*M2-1.0)/2.4));
+   a3 = Math.atan(Math.sqrt(M2*M2-1.0));
+   pm2 = (a1*a2 - a3);
+   e2 = pm - pm2;
+   aM1=M1;
+   count = 1;
+   while (count<1000) {
+    if (count > 500) {
+     M2 = "Over Expanded";
+     count=2000;
+     fail=1;
+    }
+    if (Math.abs(e2)<1.0e-5) {
+     count=2000;
+    }
+    count = count+1;
+    a1 = (e2 - e1)/(M2 - aM1);
+    a2 = e2 - a1*M2;
+    aM1 = M2;
+    M2 = - a2/a1;
+    e1 = e2;
+    a1 = Math.sqrt(2.4/0.4);
+    a2 = Math.atan(Math.sqrt(0.4*(M2*M2-1.0)/2.4));
+    a3 = Math.atan(Math.sqrt(M2*M2-1.0));
+    pm2 = (a1*a2 - a3);
+    e2 = pm - pm2;
+   }
+  }
+ }
+ if (fail>0) {
+  document.getElementById("M2").value = M2;
+ } else {
+  document.getElementById("M2").value = M2.toPrecision(5);
+ }
+ 
+ const c = document.getElementById("imageout");
+ const ctx = c.getContext("2d");
+ ctx.fillStyle = "white";
+ ctx.fillRect(0, 0, 500, 400);
+ var thrad=theta/180.0*PI;
+ var ix1,iy1,ix2,iy2,ix3,iy3;
+ ix1= 350*Math.cos(thrad); 
+ iy1= 350*Math.sin(thrad);
+ ix2=ix1+200;
+ iy2=iy1+300;
+ if (ix2>499) {
+  ix2=499;
+  iy2=Math.round(300+299/ix1*iy1);
+ }
+ if (iy2>399) {
+  iy2=399;
+  ix2=Math.round(200+ix1*99/iy1);
+ } 
+ ctx.beginPath();
+ ctx.lineWidth=2;
+ ctx.moveTo(0,300);
+ ctx.lineTo(200,300);
+ ctx.lineTo(ix2,iy2);
+ ctx.lineTo(ix2,399);
+ ctx.lineTo(0,399);
+ ctx.lineTo(0,300);
+ ctx.closePath();
+ ctx.fillStyle="green";
+ ctx.fill();
+ var pmmax= PI/2.0*(Math.sqrt(2.4/0.4)-1.0);
+ var thmax=pmmax-pm1;
+ var thmaxdeg=thmax*180/PI;
+ document.getElementById("thmax").value = thmaxdeg.toPrecision(5);
+ if (thrad>thmax) {
+  ix1=200;
+  iy1=300;
+  ix2=Math.round(200+500*Math.cos(thmax));
+  iy2=Math.round(300+500*Math.sin(thmax));
+  ctx.strokeStyle = 'red';
+  ctx.moveTo(ix1,iy1);
+  ctx.lineTo(ix2,iy2);
+  ctx.stroke();
+ } else {
+  if (fail==0) {
+   if (theta>0.0 & M1>=1.0) {
+    var macha=Math.asin(1.0/M1);
+    ix1=200;
+    iy1=300;
+    var machb=Math.asin(1.0/M2)-thrad;
+    ix2=Math.round(200+500*Math.cos(macha));
+    iy2=Math.round(300-500*Math.sin(macha));
+    ix3=Math.round(200+500*Math.cos(machb));
+    iy3=Math.round(300-500*Math.sin(machb));
+    ctx.strokeStyle = 'blue';
+    ctx.moveTo(ix2,iy2);
+    ctx.lineTo(ix3,iy3);
+    var dangle=(macha-machb)/50;
+    var machc=machb+dangle;
+    while (machc<macha) {
+     ix2=Math.round(200+500*Math.cos(machc));
+     iy2=Math.round(300-500*Math.sin(machc));
+     ctx.moveTo(ix1,iy1);
+     ctx.lineTo(ix2,iy2);
+     machc=machc+dangle;
+    } 
+    ix2=Math.round(200+500*Math.cos(machb));
+    iy2=Math.round(300-500*Math.sin(machb));
+    ctx.moveTo(ix1,iy1);
+    ctx.lineTo(ix2,iy2);
+    ctx.stroke();
+   }
+  }
+ } 
+ ctx.font = "20px Arial";
+ ctx.fillText("M1 -->",20,250);
+ document.getElementById("results").style.visibility="visible";
+}
+
+</script>   
+
+<center><a href="#top">Back to Top</a></center>
+
+
+</div><!-- .entry-content -->
+</div>
+</article><!-- #post-364 -->
+</div><!-- #content .site-content -->
+</div><!-- #primary .content-area -->
+</div><!-- .full-container -->
+</div><!-- #main .site-main -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+<div id="footer-widgets" class="full-container">
+<center><a href="../terms_and_conditions.pdf"><img border="0" Height="25" src="../c-foot.png" /></a></center>
+</div>
+</footer><!-- #colophon .site-footer -->
+</div><!-- #page-wrapper -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NDXEPQKPZS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-NDXEPQKPZS');
+</script>
+
+</body>
+</html>
