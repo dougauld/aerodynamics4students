@@ -24,12 +24,19 @@
    <li id="menu-item-223" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-223"><a href="../introduction/index.html">Introduction</a></li>
    <li id="menu-item-224" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-224"><a href="../fluid-mechanics/index.html">Fluid Mechanics</a></li>
    <li id="menu-item-225" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-225"><a href="../flow-visualisation/index.html">Flow Visualisation</a></li>
-   <li id="menu-item-226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="../properties-of-the-atmosphere/index.html">Properties of the Atmosphere</a>
+   <li id="menu-item-226" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-226"><a href="../properties-of-the-atmosphere/index.html">Properties of the Atmosphere</a>   </li>
    <li id="menu-item-233" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-233"><a href="../subsonic-aerofoil-and-wing-theory/index.html">Subsonic Aerofoil and Wing Theory</a>   </li>
    <li id="menu-item-242" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-242"><a href="../gas-dynamics-and-supersonic-flow/index.html">Gas Dynamics and Supersonic Flow</a></li>
    <li id="menu-item-243" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-243"><a href="../propulsion/index.html">Propulsion</a>   </li>
    <li id="menu-item-248" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-248"><a href="../aircraft-instruments/index.html">Aircraft Instruments</a></li>
-   <li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-275"><a href="../aircraft-performance/index.html">Aircraft Performance</a></li>
+   <li id="menu-item-275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-275"><a href="../aircraft-performance/index.html">Aircraft Performance</a>
+   <ul class="sub-menu">
+   <li id="menu-item-227" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-227"><a href="./rotor-momentum-analysis.html">Rotor Momentum Analysis</a></li>
+   <li id="menu-item-228" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-228"><a href="./blade-profile-drag.html">Blade Profile Drag</a></li>
+   <li id="menu-item-229" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-229"><a href="./helicopter-forward-flight.html">Forward Flight Analysis</a></li>
+   <li id="menu-item-230" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-230"><a href="../propulsion/blade-element-rotor-theory.html">Blade Element Analysis for Rotors</a></li>
+   </ul>
+   </li>
    <li id="menu-item-276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-276"><a href="../Flight-Mechanics/index.html">Flight Mechanics</a></li>   
    <li id="menu-item-356" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-356"><a href="../aeroelasticity/index.html">Aeroelasticity</a></li>
    <li id="menu-item-363" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-363"><a href="../wind-tunnel-simulation/index.html">Wind Tunnel Simulation</a>   </li>
@@ -49,30 +56,88 @@
      <article id="post-364" class="post-364 page type-page status-publish hentry post">
      <div class="entry-main">
      <div class="entry-content"> 
+
+
+<h1><font color="#800000">Rotor Blade Profile Drag</font></h1>
+
+<p>As well as the power
+requirements to create induced velocity and to
+climb at a given velocity, additional power is required to over come
+the profile drag of the rotor blades as they move within the rotor
+disk.</p>
+<p align="center"><img src="rotor_disk_view.png" name="Image1" align="center" width="581" height="535" border="0"/>
+</p><p>The drag on a small element of a blade will be</p>
 <center>
-<table width="80%"><tr><td colspan="2">
-<h3 dir="ltr"><span style="color: #800000;">AIRCRAFT PERFORMANCE</span></h3>
-</td></tr><tr><td>
-<h3 dir="ltr"><span style="color: #800000;">Fixed Wing Aircraft </span>  </h3>
-<p dir="ltr"><a href="../properties-of-the-atmosphere/index.html">Properties of the Atmosphere</a></p>
-<p dir="ltr"><a href="aircraft-weight-and-geometry.html">Aircraft Weight and Geometry</a></p>
-<p dir="ltr"><a href="airspeed-measurement.html">Airspeed Measurement</a></p>
-<p dir="ltr"><a href="lift-and-lift-coefficient.html">Lift and Lift Coefficient</a></p>
-<p dir="ltr"><a href="drag-and-drag-coefficient.html">Drag and Drag Coefficient</a></p>
-<p dir="ltr"><a href="engine-thrust-and-power.html">Engine Thrust and Power</a></p>
-<p dir="ltr"><a href="flight-envelope.html">Flight Envelope</a></p>
-<p dir="ltr"><a href="take-off-and-landing.html">Take-Off and Landing</a></p>
-<p dir="ltr"><a href="climb-and-descent.html">Climb and Descent</a></p>
-<p dir="ltr"><a href="range-and-endurance.html">Range and Endurance</a></p>
-<p dir="ltr"><a href="manoeuvres.html">Manoeuvres</a></p>
-<p dir="ltr"><a href="performance-envelopes.html">Performance Envelopes</a></p>
-<p dir="ltr"><a href="weight-and-balance.html">Weight and Balance Requirements</a></p>
-</td><td>
-<h3><span style="color: #800000;">Rotary Wing Aircraft</span></h3>
-<p><a href="rotor-momentum-analysis.html">Hover/Climb/Descent Analysis</a> (momentum analysis)</p>
-<p><a href="blade-profile-drag.html">Blade Profile Drag</a></p>
-<p><a href="helicopter-forward-flight.html">Forward Flight Analysis</a></p>
-<p><a href="../propulsion/blade-element-rotor-theory.html">Blade Element Analysis for Rotors</a></p>
+$$ &Delta; D = C_D 1/2 &rho; V_{local}^2 c dr $$
+</center>
+<p>where <br />
+$C_D $ is the local drag coerfficient of the blade aerofoil section<br />
+$&rho; $ is the density of the air <br />
+$ c $ is the local blade chord length and <br />
+$V_{local}$ is the local magnitude of flow velocity at this section
+</p>
+<p>The
+small component of torque to be overcome by the motor will be this
+force times the moment arm from the central shaft, $ r $.</p>
+<center>
+$$ &Delta; Q = C_D 1/2 &rho; V_{local}^2 c r dr $$
+</center>
+<p>The
+local velocity will be due to the blade's angular velocity</p>
+<center>
+$$ V = &Omega; r $$
+</center>
+<p>Thus 
+</p>
+<center> 
+$$ &Delta; Q = C_D 1/2 &rho; &Omega;^2 c r^3 dr $$
+</center>
+<p>If it
+is assumed that blade chord and section drag coefficient are roughly constant
+from hub to maximum radius, $ R $, then for a rotor disk with $ N $ blades, the total
+torque required to overcome profile drag will be</p>
+<center>
+$$ Q = C_D 1/2 &rho; &Omega;^2 c N &int;_0^R r^3 dr $$
+<br />
+$$ Q = C_D 1/8 &rho; &Omega;^2 c N R^4 $$ 
+</center> 
+<p>The
+power required to overcome the profile drag will thus be the torque
+times the rotation rate.</p>
+<center>
+$$ P_{profile} = &Omega; Q = C_D 1/8 &rho; c N &Omega;^3 R^4 $$
+</center>
+<p>The
+profile power required will be in addition to the power required to
+produce the induced momentum to balance weight and the power required
+to climb and is a significant addition to the ideal momentum
+calculation.</p>
+<center> 
+$$ P_{hover} = P_{vi} + P_{profile} $$
+<br />
+$$ P_{climb} = P_{Vc} + P_{vi} + P_{profile} $$
+</center>
+<p>For
+example, 
+</p>
+<p align="left" >A
+typical 3 bladed helicopter of mass 3000Kg with 16m rotor diameter
+will have the following power requirements. 
+</p>
+<p align="center" ><img src="rotor_power_comparison.png" name="Image2" width="643" height="384" border="0"/>
+</p>
+<p>
+This
+agrees well with a blade element analysis of the rotor, although the
+comparison diverges for higher climb rates. Higher collective angle
+is required for higher climb rates whereas the above profile drag
+calculation is based only on an average $ C_D $ for normal
+collective angles.</p>
+<p align="left" > 
+</p>
+<p align="left" ><br/>
+
+</p>
 </td></tr></table>
 
 <center><a href="#top">Back to Top</a></center>
@@ -104,3 +169,4 @@
 
 </body>
 </html>
+
