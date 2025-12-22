@@ -50,32 +50,52 @@
      <article id="post-364" class="post-364 page type-page status-publish hentry post">
      <div class="entry-main">
      <div class="entry-content"> 
-                <center><img src="snrwt0.gif" width="593" height="279" /></center>
-                <p style="text-align: left;">
-                Welcome to the SNR (Simulated, Not Real) Wind Tunnel Laboratory at the School of Aerospace, Mechanical and Mechatronic Engineering, 
-                University of Sydney. The building consists of three rooms, an administration office, a pattern shop and the wind tunnel labs. 
-                In the SNR tunnel you can carry out aerofoil and wing experiments that will let you investigate the behaviour of various shapes under 
-                different Reynold's number conditions. For further information and help you should visit the admin office.</p>
-                <p>
-                <table width="95%" cellpadding="5" cellspacing="5">
-                <tr><td>
-                 <h3><a style="color: #ff6600;" href="admin-office.html"><b>Room 1</b></h3>
-                 <p><span style="color: #064d99;">Administration Office</span></a><br />
-	         (visit this room first)<br />
-                 This is where you go to arrange authorisation and book time in the tunnel. You can find out the cost of tunnel hire and get information on the tunnel operating specifications and limitations.</p>
-                </td><td>
-                 <h3><a style="color: #ff6600;" href="pattern-shop.html""><b>Room 2</b></h3>
-	         <p><span style="color: #064d99;">Pattern Shop</span><br />
-                 (Model Construction)</a><br />
-  	         This is where the wind tunnel models are constructed. There are several numerical machines that can be used. The type of machine needed depends on the type of flow solution required. Once constructed, all models can be stored for future use in "the shed" out the back.</p>
-                </td><td>
-                 <h3><a style="color: #ff6600;" href="wind-tunnel-laboratory.html""><b>Room 3</b></h3>
-                 <p><span style="color: #064d99;">Wind Tunnels and Labs</span><br />
-                 (Testing)</a><br />
-                 This is where the testing is carried out. Models are mounted in the wind tunnel. Tests are run for specified velocities, angles and atmospheric properties. Our expert technicians will help you with the test program and provide a comprehensive set of force, moment and pressure distribution results.</p>
-                </td></tr>
-                </table>
 
+
+<table width="100%" cellpadding="40" cellspacing="20">
+<tr><td valign="top" width="30%">
+<img src="deliver.gif" border=0>
+</td><TD width="70%">
+<p>
+With a manual editing tool you can create an aerofoil geometry that has been constructed
+elsewhere. The required input
+for the process is the name of the section file containing the coordinates of the aerofoil
+that you have already produced. This should be an ASCII data file with the extension
+".txt". Store the section in a relevant location for
+later use in the wind tunnel.<BR>&nbsp;<br>
+<table width="300" align="center"><tr><td>Sample of Required Format : <br /><hr>
+<pre>
+Section : 0012
+Number of Data Points = 61.0000
+Span = 10.0
+Upper Surface	Lower Surface
+X         Y         X         Y
+0         0         0         0
+0.002739 	0.0091145	0.002739	-0.0091145
+0.010926	 0.017770	 0.010926	-0.017770
+0.024472	 0.025893	 0.024472	-0.025893
+0.043227	 0.033389	 0.043227	-0.033389
+0.066987	 0.040145	 0.066987	-0.040145
+            .....
+0.98907		 0.0027828	0.98907		-0.0027828
+0.99726		 0.0016437	0.99726		-0.0016437
+1.0000		  0.0012600	1.0000	 	-0.0012600
+</pre><br /><hr>
+</td></tr></table>
+<b><i>Notes</i></b> : Section name should contain letters and numbers only (no spaces). <br />
+File must contain span of wing in metres on line 3 or the text "Span = 2D" <br />
+Must contain number of surface data points supplied on line 2<br />
+Section surface data points (meters) are listed as X,Y cordinates, starting at leading edge 
+and running along upper and lower surfaces to trailing edge. (leading edge point will be a duplicate).
+The file format must be identical to that produced by the NACA milling
+machine otherwise it will not suit the balance mounting system and cannot
+be installed into the tunnel.
+</p>
+<p>
+<P><DIR><DIR>
+</CENTER>
+</td></tr></table>
+</DIR></DIR></P><P><br /></P>
 
 <center><a href="#top">Back to Top</a></center>
 
@@ -106,3 +126,4 @@
 
 </body>
 </html>
+
