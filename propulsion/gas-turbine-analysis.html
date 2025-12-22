@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=10" />
-<title>Propulsion | Aerospace 101</title>
+<title>Propulsion | Aerodynamics for Students</title>
 <link rel='stylesheet' id='style-css'  href='../style.css' type='text/css' media='all' />
 <link rel="stylesheet" href="../jqmath/jqmath-0.4.3.css">
 <script src="../jqmath/jquery-1.4.3.min.js"></script>
@@ -56,27 +56,64 @@
      <article id="post-364" class="post-364 page type-page status-publish hentry post">
      <div class="entry-main">
       <div class="entry-content"> 
-       <table><tr><td>
-	   <h3><span style="font-size: medium;"><b><span style="color: #800000;">Sections :</span> </b></span></h3>
-       <p><a href="./blade-element-propeller-theory.html" rel="nofollow">Blade Element Propeller Theory</a></p>
-       <p><a href="./blade-element-rotor-theory.html">Blade Element Rotor Theory</a></p>
-       <p><a href="./gas-turbine-analysis.html">1-D Gas Turbine Analysis</a></p>
-       <p><a href="./simple-rocket-analysis.html">Simple Rocket Analysis</a></p>
-       </td><td>		
-       <p><img class="alignnone wp-image-197 size-full" src="./propulsion11.jpg" alt="propulsion1" width="842" height="596" /></p>
-       </td></tr></table>
-      </div><!-- .entry-content -->
-     </div>
-     </article><!-- #post-364 -->
-    </div><!-- #content .site-content -->
-   </div><!-- #primary .content-area -->
-  </div><!-- .full-container -->
- </div><!-- #main .site-main -->
- <footer id="colophon" class="site-footer" role="contentinfo"> 
- <div id="footer-widgets" class="full-container"> 
-	 <center><a href="../terms_and_conditions.pdf"><img border="0" src="../c-foot.png" height="25" /></a></center>
+
+<h3>GAS TURBINE ANALYSIS</h3>
+<h2>Ideal Cycle</h2>
+<p>The simplest way to predict the behaviour of a gas turbine engine is to use an ideal one dimensional gas dynamics/ thermodynamic analysis. Assuming the engine operates on an ideal Brayton cycle, then the problem becomes one of tracking gas flow through an ideal intake, isentropic compression, constant pressure combustion and finally isentropic expansion through a turbine and nozzle.</p>
+<center><img src="gas_turbine1.jpg" width="640" height="300" ></center>
+<p>Some simple assumptions are needed to allow for the calculations to proceed.</p>
+<ol>
+<li>Isentropic intake and compression (no losses)</li>
+<li>Constant pressure combustion. As the flow is relatively slow in the inlet to the combustion chamber then it can be assumed that the pressure is roughly equal to the stagnation pressure of the flow at this point. The stagnation temperature rise is based on the mass flow rate of fuel injected and its calorific value, giving rise to an enthalpy change CpT<sub>O</sub></li>
+<li>The turbine provides all required energy to drive the compressor and/or fan.</li>
+<li>Isentropic expansion through the exhaust nozzle back to surrounding ambient pressure.</li>
+<li>For a simple core only engine, the change in velocity of the exhaust gas compared to inlet stream will be an ideal measure of the thrust generated.</li>
+</ol>
+<p>
+$$T={dm_e}/{dt}(V_e-V_&infin;)$$
+</p>
+<p>where ${dm_e}/{dt}$ is the mass flow rate of air and fuel through the core of the engine.</p>
+<p>When the engine is also driving a fan to produce cooler bypass flow then the total thrust can be found by summing the momentum change to both bypass and core gas streams.</p>
+<p>
+$$T={dm_e}/{dt}(V_e-V_&infin;)+&beta;{dm_e}/{dt}(V_{fan}-V_&infin;)$$
+</p><p>where $&beta;$ is the turbo fan by-pass ratio.</p>
+<h2>Gas Turbine Analysis Software</h2>
+<p>In the following application, the prediction of thrust for a typical commercial aircraft turbo-fan engine can be investigated. To explore a range of operating conditions input values can be set for</p>
+<p>Stream Conditions :</p>
+<ul>
+<li>Altitude</li>
+<li>Flight Mach Number</li>
+</ul>
+<p>Engine Conditions/Geometry :</p>
+<ul>
+<li>Compressor Pressure Ratio (CPR)</li>
+<li>Fan Pressure Ratio (FPR)</li>
+<li>Bypass Ratio</li>
+<li>Fuel-Air Ratio.</li>
+</ul>
+<p>The application predicts thrust and specific fuel consumption based on these input conditions. Note, the solution does not include any second order effects and does not check whether the engine is operating within sensible physical limits.</p>
+<hr />Ideal Cycle Analysis for TurboFan : (<a href="gasturbine.html">Gas Turbine</a>)<br />
+Ideal Cycle Analysis for TurboFan : (<a href="gasturbine.exe">MS Windows 32bit Application : Gasturbine </a><i>811kB</i>)</p>
+<hr />For an overview on the operation of many types of aircraft engine<br />
+visit the <a href="http://www.prattwhitney.com/products-and-services/products">Pratt &amp; Whitney information</a> pages.</p>
+<hr /> </p>
+
+
+<center><a href="#top">Back to Top</a></center>
+
+
+</div><!-- .entry-content -->
+</div>
+</article><!-- #post-364 -->
+</div><!-- #content .site-content -->
+</div><!-- #primary .content-area -->
+</div><!-- .full-container -->
+</div><!-- #main .site-main -->
+<footer id="colophon" class="site-footer" role="contentinfo">
+<div id="footer-widgets" class="full-container">  
+ <center><a href="../terms_and_conditions.pdf"><img border="0" src="../c-foot.png" height="25" /></a></center>
  </div><!-- #footer-widgets -->
- </footer><!-- #colophon .site-footer -->
+</footer><!-- #colophon .site-footer -->
 </div><!-- #page-wrapper -->
 
 <!-- Google tag (gtag.js) -->
