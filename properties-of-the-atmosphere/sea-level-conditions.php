@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<meta http-equiv="refresh" content="0; URL=https://aerospace101.com/properties-of-the-atmosphere/index.html" />
+
+<title>Resources | Aerodynamics for Students</title>
+
+</head>
+
+<body>
+ &nbsp;
+</body>
+</html>
